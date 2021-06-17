@@ -7,8 +7,7 @@ router.get("/", (req, res) => {
   Tag.findAll({
     include: [
       {
-        model: ProductTag,
-        include: [{ model: Product }],
+        model: Product,
       },
     ],
   })
@@ -28,7 +27,7 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    include: [{ model: ProductTag, include: [{ model: Product }] }],
+    include: [{ model: Product }],
   })
     .then((result) => {
       if (!result) {
